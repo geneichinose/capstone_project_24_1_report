@@ -1,7 +1,6 @@
-Note to instructor: I had to change datasets for my capstone project because the plan to use seismic data quality assurance metrics (from www.iris.edu) was too time consuming due to the lack of binary class labels.  I ran out of time to label the data manually. I may still atempt this but only as a plan B.  The following is an alternative analysis using dataset with multiclass labels.   
+# Capstone Project 24.1: Report and Presentation
 
-# Capstone Project 20.1: Initial Report and Exploratory Data Analysis
-version 02/14/2023
+version 03/09/2023
 
 ## Business Understanding
 
