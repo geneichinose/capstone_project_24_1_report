@@ -89,13 +89,12 @@ explained_variance_ratio = [ 0.77  0.23  0.00  0.00  0.00  0.00]
 singular_values = [ 81.78  44.18  0.04  0.02  0.00  0.00]
 </pre>
 
-We are still working on PCA analysis but so far this is leading to unstable decision boundaries.  We are for now only using lune_lat and lune_lon
+The PCA derived features was leading to unstable decision boundaries.  We hypothesize this is due to overfitting.  For now we are only using lune_lat and lune_lon as the features to train using the class labels.  
 
 ## Modeling
 
 1. Training testing split (train 60%; testing 40%)
-2. Test sets of features:
-  * features = ['lune_lat', 'lune_lon', 'mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz', 'eig1', 'eig2', 'eig3']
+2. Test sets of features, the first set works the best:
   * features = ['lune_lat', 'lune_lon']
   * features = ['mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz']
   * features = ['eig1', 'eig2', 'eig3']
