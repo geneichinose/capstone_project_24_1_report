@@ -43,6 +43,7 @@ Class imbalance:
 3. co  3.3%
 
 ![class.png](plots/class.png)
+
 <i>Histogram of percentages of dataset for each class label.</i>
 
 ### Correlation
