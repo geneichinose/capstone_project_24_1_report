@@ -48,7 +48,7 @@ Class imbalance:
 
 ### Correlation
 
-We find the usual expected correlation between value of lune_lat which is derived from the the diagonal of the MT (mxx, myy, and mzz).  We see that none of the features by themselves correlate with the label.  
+Since lune_lat is derived from the diagonal of the MT (mxx, myy, and mzz), we find the usual expected correlations between these values.  We see that no one of the features by themselves correlate very well with the numerical class label which indicates that 2 or more features is needed for classification.  
 
 ![seaborn_heatmap_correlation_features.png](plots/seaborn_heatmap_correlation_features.png)
 
