@@ -89,7 +89,13 @@ explained_variance_ratio = [ 0.77  0.23  0.00  0.00  0.00  0.00]
 singular_values = [ 81.78  44.18  0.04  0.02  0.00  0.00]
 </pre>
 
-The PCA derived features was leading to unstable decision boundaries.  We hypothesize this is due to overfitting.  For now we are only using lune_lat and lune_lon as the features to train using the class labels.  
+It is interesting to note that the PCA with 6 components results in only 2 values that have significance indicating that the problem can be reduced to just 2 dimensions. We therefore reran PCA with n_components=2 and make a scatter plot. 
+
+![pca.png](plots/pca.png)
+
+<i>A scatterplot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not seperate the class labels as well as using spherical projection of the eigenvalues.</i> 
+
+The PCA derived features was leading to unstable decision boundaries.  We hypothesize this is due to overfitting.  For now we are only using lune_lat and lune_lon as the features to train using the class labels. 
 
 ## Modeling
 
