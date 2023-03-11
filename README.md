@@ -41,7 +41,9 @@ Class imbalance:
 1. eq 82.4%
 2. ex 14.3%
 3. co  3.3%
+
 ![class.png](plots/class.png)
+<i>Histogram of percentages of dataset for each class label.</i>
 
 ### Correlation
 
