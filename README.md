@@ -55,7 +55,7 @@ label     0.177268 -0.049500  0.054804  0.059154  0.100827  1.000000
 
 Seaborn heatmap of correlation values
  
-![seaborn_heatmap_corr.png](plots/seaborn_heatmap_corr.png)
+![seaborn_heatmap_correlation_features.png](plots/seaborn_heatmap_correlation_features.png)
 
 Seaborn Pairplot
 
