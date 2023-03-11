@@ -58,7 +58,7 @@ Seaborn Pairplot
 
 ![seaborn_pairplot.png](plots/seaborn_pairplot.png)
 
-<i>Seaborn Scatter plot. </i>
+<i>Seaborn pairplot of the dataset features.  We see the 2-dimensional space with lune_lat and lune_lon will work best for classification</i>
  
 ![seaborn_scatterplot.png](plots/seaborn_scatterplot.png)
 
