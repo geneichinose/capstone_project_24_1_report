@@ -42,36 +42,29 @@ Class imbalance:
 2. ex 14.3%
 3. co  3.3%
 
-Correlation
-<pre>
-          lune_lat  lune_lon      eig1      eig2      eig3     label
-lune_lat  1.000000 -0.459587  0.351039  0.474907  0.495914  0.177268
-lune_lon -0.459587  1.000000 -0.003108  0.070986 -0.498022 -0.049500
-eig1      0.351039 -0.003108  1.000000  0.099220 -0.497361  0.054804
-eig2      0.474907  0.070986  0.099220  1.000000 -0.137325  0.059154
-eig3      0.495914 -0.498022 -0.497361 -0.137325  1.000000  0.100827
-label     0.177268 -0.049500  0.054804  0.059154  0.100827  1.000000
-</pre>
+### Correlation
 
-Seaborn heatmap of correlation values
- 
+We find the usual expected correlation between value of lune_lat which is derived from the the diagonal of the MT (mxx, myy, and mzz).  We see that none of the features by themselves correlate with the label.  
+
 ![seaborn_heatmap_correlation_features.png](plots/seaborn_heatmap_correlation_features.png)
+
+<i>Seaborn heatmap of correlation values for all feature pairs. There are many moderate correlation between the features since they are all derived from the MT (mxx, myy, mzz, etc...).  The eigenvalues (eig1, eig2, and eig3) are derived from the MT using PCA, and the lune_lat and lune_lon are transformed from the eigenvalues.</i>
 
 Seaborn Pairplot
 
 ![seaborn_pairplot.png](plots/seaborn_pairplot.png)
 
-Seaborn Scatter plot
+<i>Seaborn Scatter plot. </i>
  
 ![seaborn_scatterplot.png](plots/seaborn_scatterplot.png)
 
-Two features (lune_lat and lune_lon) used to train classifiers in linear (x,y) Cartesian cooridinate system
+<i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian cooridinate system.  </i>
 
 GMT plot
 
 ![lune.png](plots/lune.png)
 
-Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude,latitude) coordinate system.  
+<i> Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude,latitude) coordinate system.  The Hammer projection "spherical" is a better projection compared to linear for seperating the classes.</i>
 
 This type of Hammer spherical projection is preferred over others including Cartesian because it preserves the true physical distances between points and the areas of source types.  This is similar to the distortion some map projections make on the area of land masses near the poles.  
 
