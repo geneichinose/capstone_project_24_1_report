@@ -54,7 +54,7 @@ Since lune_lat is derived from the diagonal of the MT (mxx, myy, and mzz), we fi
 
 ![seaborn_heatmap_correlation_features.png](plots/seaborn_heatmap_correlation_features.png)
 
-<i>Seaborn heatmap of correlation values for all feature pairs. There are many moderate correlation between the features since they are all derived from the MT (mxx, myy, mzz, etc...).  The eigenvalues (eig1, eig2, and eig3) are derived from the MT using PCA, and the lune_lat and lune_lon are transformed from the eigenvalues.</i>
+<i>Seaborn heatmap of correlation values for all feature pairs. There are many moderate correlations between the features since they are all derived from the MT (mxx, myy, mzz, etc...).  The eigenvalues (eig1, eig2, and eig3) are derived from the MT using PCA, and the lune_lat and lune_lon are transformed from the eigenvalues.</i>
 
 <i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian coordinate system. 
 We see the 2-dimensional space with lune_lat and lune_lon will work best for classification.</i>
@@ -249,7 +249,7 @@ _________________________________________________________________
 
 We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second Jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalue sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
 
-Visualizing the decision boundaries is important for inspecting the models ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
+Visualizing the decision boundaries is important for inspecting the models' ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
 We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundaries between the classes with gradational class probabilities. Most of these methods are parameterized and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
 
 We added the decision boundaries computed from a 2-layer neural network (NN) classifier. The first was a test to examine if the NN could be trained based on MT itself (i.e.,) mxx, myy, mzz, mxy, mxz, and myz. The second attempt was based on just the lune_lat and lune_lon. We found as expected that the NN trained on lune_lat and lune_lon, resulted in similar classifier decision boundaries as MLP and SVM .
@@ -270,11 +270,11 @@ Average fit time is important for time it takes to train the ML model.  SVC was 
  
 4. Clf.predict(X) generates class memberships inconsistent with clf.predict_proba(X).  We adopted multiclass approach used in tensorflow.keras which is to used prob=clf.predict_proba(X) and then np.argmax(prob) to find the index for the class with the maximum probability.
 
-5. NN approach also works well and is very compariable to SVC.  The scores are only slightly lower.
+5. NN approach also works well and is very comparable to SVC.  The scores are only slightly lower.
 
 ## Future Work, Next Steps
 
-1. An Artificial Neural Network (ANN) or NN was able to produce results that were similar in recall score to the SVC estimator using the 2 independent variables lune_lat and lune_lon.  We also preliminarly attempted to train the ANN on using the moment tensor (MT) features (mxx, myy, mzz, mxy, mxz, myz) instead of lune_lat and lune_lon.  That would require training the NN to reduce the dimensionality of the 6 independent variables to just 2 features and also learn the transofrmation to a spherical or similar coordinate system that best separated the class populations. An interesting future study would be to see if the NN could be trained to do this, how many layers it would take, and also what amount of training data would be necessary.  
+1. An Artificial Neural Network (ANN) or NN was able to produce results that were similar in recall score to the SVC estimator using the 2 independent variables lune_lat and lune_lon.  We also preliminarily attempted to train the ANN on using the moment tensor (MT) features (mxx, myy, mzz, mxy, mxz, myz) instead of lune_lat and lune_lon.  That would require training the NN to reduce the dimensionality of the 6 independent variables to just 2 features and also learn the transformation to a spherical or similar coordinate system that best separated the class populations. An interesting future study would be to see if the NN could be trained to do this, how many layers it would take, and also what amount of training data would be necessary.  
 
 2. Create a summary of multiclass scores of metrics for tensorflow.keras like those in sklearn and in the function make_multiclass_score(). 
 
