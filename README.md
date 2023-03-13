@@ -193,7 +193,7 @@ weighted avg       0.95      0.94      0.94       576
  
 ## Deployment 
 
-We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampling the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
+We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalye sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
 
 Visualizing the decision boundaries is important for inspecting the models ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
 We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundries between the classes with gradiational class probabilities. Most of these methods are parameteriezed and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
@@ -205,11 +205,16 @@ We were surprised that even with limited training data, that the NN could be tra
 
 1. The best set of features are lune_lat and lune_lon.  Adding additional features Mxx, Myy, ..., eig1, eig2, eig3 only caused overfitting and unstable decision bondaries. 
 
-2. SVC classifier works best so far but we are still evaluating 9 other classifier methods.
+2. SVC classifier works best compared to the other 9 classifier methods because it satisified all the necessary crieria: a) highest recall with reasonable false alarm rate (ok f1-score), b) decison boundaries and class probabilities that are easy to explain, c) correct classification of conanical sources (i.e., pure explosions and implosions are classified correctly as well as pure earthquakes).  Decision boundaries are easy to explain because they can be represented by smooth contours rather than notches or islands/pockets of classes embedded in each other.     
 
 3. Below is a summary of metrics from difference classifiers
 
 ![Table_of_scores.png](plots/Table_of_scores.png)
+
+4. clf.predict(X) generates class memberships inconsistent with clf.predict_proba(X).  We adopted multiclass approach used in tensorflow.keras which is to used prob=clf.predict_proba(X) and then np.argmax(prob) to find the index for the class with the maximum probability.
+
+5. NN approach also works well and is very compariable to SVC.  The scores are only slightly lower.
+
 
 ## Future Work, Next Steps
 
