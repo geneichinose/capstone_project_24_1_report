@@ -185,10 +185,6 @@ Precision-Recall curve for SVC
 
 To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X)
 
-![gpc.lune.jpg](output/gpc.lune.jpg)
-
-Classification decision boundaries and class probabilities for GPC classifier
-
 ![svc.lune.jpg](output/svc.lune.jpg)
 
 Classification decision boundaries and class probabilities for SVC classifier 
