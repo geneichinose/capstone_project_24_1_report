@@ -181,16 +181,16 @@ weighted avg       0.95      0.94      0.94       576
 
 <I>Receiver-operator curve (ROC) for SVC classifier. We see that the area under the curve (AUC) is 0.98-1.0 for all classes which is very good.</I>
 
-Precision-Recall curve for SVC
-
 ![svc_precision_recall_curves.png](plots/svc_precision_recall_curves.png)
 
-To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X)
+<I>Precision-Recall curve for SVC. We see that the cyan curve (P-R class ex) has AP of 0.93 and for highest recall the associated precision is about 0.75 and f1-score of 0.85. 
 
+#### Classification decision boundaries and class probabilities for SVC classifier 
+ 
 ![svc.lune.jpg](output/svc.lune.jpg)
 
-Classification decision boundaries and class probabilities for SVC classifier 
-
+<I>To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X), (see more below).</I>
+ 
 ## Deployment 
 
 We save the classification models and included a second jupyter notebook with code to apply classifiers to new data to obtain class probabilities.
