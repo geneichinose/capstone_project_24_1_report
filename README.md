@@ -1,4 +1,4 @@
-# Moment tensor based multinomial classifier for Earthquake, Explosion, and Collapse Seismic Soure Types
+# Moment tensor based multinomial classifiers for Earthquake, Explosion, and Collapse Seismic Soure Types
 
 ## Capstone Project 24.1: Report and Presentation
 
