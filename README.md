@@ -183,7 +183,7 @@ weighted avg       0.95      0.94      0.94       576
 
 ![svc_precision_recall_curves.png](plots/svc_precision_recall_curves.png)
 
-<I>Precision-Recall curve for SVC. We see that the cyan curve (P-R class ex) has AP of 0.93 and for highest recall the associated precision is about 0.75 and f1-score of 0.85. 
+<I>Precision-Recall curve for SVC. We see that the cyan curve (P-R class ex) has AP of 0.93 and for highest recall the associated precision is about 0.75 and f1-score of 0.85. </I>
 
 #### Classification decision boundaries and class probabilities for SVC classifier 
  
