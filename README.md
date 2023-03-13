@@ -133,7 +133,7 @@ The following is an outline of the multiclass modeling analysis in the Jupyter n
 11. Plot multiclass ROC and average ROC curves, compare AUC values
 12. When classifiers have clf.decision_function() method then plot the multiclass precision and recall curves.
 
-For the modeling we tested 10 classifiers: 
+For the modeling we tested 10 classifiers and a preliminary sequential layered neural network classifier: 
 1. Support Vector Machine (SVC) 
 2. Decision Tree Classifier (DTC)
 3. K-Neighbors Classifier (KNN)
@@ -144,6 +144,7 @@ For the modeling we tested 10 classifiers:
 8. Ada Boost Classifier (ABC)
 9. Gaussian Naïve Bayes (GNB)
 10. Quadratic Discriminant Analysis (QDA)
+11. Artificial Neural Network (NN) -- separate preliminary addon analysis. 
 
 ## Evaluation
 
