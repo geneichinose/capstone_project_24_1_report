@@ -56,18 +56,18 @@ Since lune_lat is derived from the diagonal of the MT (mxx, myy, and mzz), we fi
 
 <i>Seaborn heatmap of correlation values for all feature pairs. There are many moderate correlation between the features since they are all derived from the MT (mxx, myy, mzz, etc...).  The eigenvalues (eig1, eig2, and eig3) are derived from the MT using PCA, and the lune_lat and lune_lon are transformed from the eigenvalues.</i>
 
-<i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian cooridinate system. 
+<i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian coordinate system. 
 We see the 2-dimensional space with lune_lat and lune_lon will work best for classification.</i>
 
 GMT plot
 
 ![lune.png](plots/lune.png)
 
-<i> Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude,latitude) coordinate system.  The Hammer projection "spherical" is a better projection compared to linear for seperating the classes.</i>
+<i> Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude, latitude) coordinate system.  The Hammer projection "spherical" is a better projection compared to linear for separating the classes.</i>
 
 This type of Hammer spherical projection is preferred over others including Cartesian because it preserves the true physical distances between points and the areas of source types.  This is similar to the distortion some map projections make on the area of land masses near the poles.  
 
-We didn't use python matplotlib to do the Hammer projection because it does not allow adjustment of the longitude range, only plots the whole globe 0-360 or -180 to +180.  We instead used Genergic Mapping Tools (GMT) software package ([link](https://www.generic-mapping-tools.org))
+We didn't use python matplotlib to do the Hammer projection because it does not allow adjustment of the longitude range, only plots the whole globe 0-360 or -180 to +180.  We instead used Generic Mapping Tools (GMT) software package ([link](https://www.generic-mapping-tools.org))
 
 ### PCA analysis
 
@@ -94,7 +94,7 @@ It is interesting to note that the PCA with 6 components results in values that 
 
 ![pca.png](plots/pca.png)
 
-<i>Figure upper left: A scatterplot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not seperate the class labels as well as using spherical projection of the eigenvalues shown in the previous plot.  The other panels show nonlinear dimensionality reduction approaches: Autoencoder, t-SNE, and Isomap. Future work could test the performance of these approches in classification.</i> 
+<i>Figure upper left: A scatter plot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not separate the class labels as well as using spherical projection of the eigenvalues shown in the previous plot.  The other panels show nonlinear dimensionality reduction approaches: Autoencoder, t-SNE, and Isomap. Future work could test the performance of these approaches in classification.</i> 
 
 
 ## Modeling Steps: 
@@ -116,7 +116,7 @@ It is interesting to note that the PCA with 6 components results in values that 
   * Balanced accuracy = (sensitivity + specificity)/ 2
   * Sensitivity = recall = TP / (TP + FN)
   * Specificity = TN / (TN + FP)
-8. Save the trained models to a disk file for later class predictions and class probabilites using a set of synthetics
+8. Save the trained models to a disk file for later class predictions and class probabilities using a set of synthetics
 9. Make a Pandas DataFrame table of scores and metric values
   * Class precision, recall, f1-score
   * Accuracy
@@ -124,7 +124,7 @@ It is interesting to note that the PCA with 6 components results in values that 
   * Weighted average
 10. Compute the multiclass values for TP, TN, FP, and FN and plot confusion matrix
 11. Plot multiclass ROC and average ROC curves, compare AUC values
-12. When classifiers have clf.decision_function() method then plot the multiclass precsion and recall curves.
+12. When classifiers have clf.decision_function() method then plot the multiclass precision and recall curves.
 
 For the modeling we tested 10 classifiers: 
 1. Support Vector Machine (SVC) 
@@ -144,7 +144,7 @@ Below are selected examples from the Support Vector Machine classifier (SVC). Th
 
 ### SVC Training and Validation Testing Results
 <PRE>
-Fitting 5 folds for each of 35 candidates, totalling 175 fits
+Fitting 5 folds for each of 35 candidates, totaling 175 fits
 Pipeline(steps=[('scaler', StandardScaler()),
                 ('svc',
                  OneVsRestClassifier(estimator=SVC(C=30,
@@ -174,13 +174,13 @@ weighted avg       0.95      0.94      0.94       576
 
 ![svc_confusion_matrix.png](plots/svc_confusion_matrix.png)
 
-<I>Confusion matrix for SVC classifier. Only 3 ex-class are missclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class prediced at ex-26 and co-6). The 26 ex-class false alarms are more concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
+<I>Confusion matrix for SVC classifier. Only 3 ex-class are misclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class predicted at ex-26 and co-6). The 26 ex-class false alarms are more concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
 
 #### ROC for SVC
 
 ![svc_roc.png](plots/svc_roc.png)
 
-<I>Receiver-operator curve (ROC) for SVC classifier. We see that the area under the curve (AUC) is 0.98-1.0 for all classes which is very good.</I>
+<I>Receiver-operator curve (ROC) for SVC classifier. We note that the area under the curve (AUC) is 0.98-1.0 for all classes which are high scores.</I>
 
 #### PRC for SVC
 
@@ -196,7 +196,7 @@ weighted avg       0.95      0.94      0.94       576
 
 ### NN Setup, Training, and Test Results
 
-We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the dataset using the 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret (runs were not reproducable).  
+We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the dataset using the 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead, we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret (runs were not reproducible).  
 
 <PRE>
 model1 = Sequential([
@@ -247,19 +247,19 @@ _________________________________________________________________
 
 ## Deployment 
 
-We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalye sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
+We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second Jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalue sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
 
 Visualizing the decision boundaries is important for inspecting the models ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
-We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundries between the classes with gradiational class probabilities. Most of these methods are parameteriezed and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
+We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundaries between the classes with gradational class probabilities. Most of these methods are parameterized and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
 
-At the end we added the decision boundaries computed from a 2-layer nueral network (NN) classifier. The first was a test to examine if the NN could be trained based on MT itself (i.e.,) mxx, myy, mzz, mxy, mxz, and myz. The second attempt was based on just the lune_lat and lune_lon. We found as expected that the NN trained on lune_lat and lune_lon, resulted in similar classifier decsion boundaries as MLP and SVM .
-We were surprised that even with limited training data, that the NN could be trained from 6 independent variables to somewhat resemble the results obtained with using just 2 independent variables (ex on top, co below and eqs in the middle). However the class probabilities are highly variable "rough" with no sharp decision boundaries. Perhaps more training data and more complex NN models are required for NN to learn the dimensionality reduction and nonlinear transformation from eigenvalue to spherical projection. Further work was beyond the scope of this study.
+We added the decision boundaries computed from a 2-layer neural network (NN) classifier. The first was a test to examine if the NN could be trained based on MT itself (i.e.,) mxx, myy, mzz, mxy, mxz, and myz. The second attempt was based on just the lune_lat and lune_lon. We found as expected that the NN trained on lune_lat and lune_lon, resulted in similar classifier decision boundaries as MLP and SVM .
+We were surprised that even with limited training data, that the NN could be trained from 6 independent variables to somewhat resemble the results obtained with using just 2 independent variables (ex on top, co below and eqs in the middle). However, the class probabilities are highly variable "rough" with no sharp decision boundaries. Perhaps more training data and more complex NN models are required for NN to learn the dimensionality reduction and nonlinear transformation from eigenvalue to spherical projection. Further work was beyond the scope of this study.
 
 ## Summary of Findings
 
-1. The best set of features are lune_lat and lune_lon.  Adding additional features Mxx, Myy, ..., eig1, eig2, eig3 only caused overfitting and unstable decision bondaries. 
+1. The best set of features are lune_lat and lune_lon.  Adding additional features Mxx, Myy, ..., eig1, eig2, eig3 only caused overfitting and unstable decision boundaries. 
 
-2. SVC classifier works best compared to the other 9 classifier methods because it satisified all the necessary crieria: a) highest recall with reasonable false alarm rate (reasonable f1-score), b) decison boundaries and class probabilities that are easy to explain, c) correct classification of conanical sources (i.e., pure explosions and implosions are classified correctly as well as pure earthquakes).  Decision boundaries are easy to explain because they can be represented by smooth contours rather than notches or islands/pockets of classes embedded in each other.     
+2. SVC classifier works best compared to the other 9 classifier methods because it satisfied all the necessary criteria: a) highest recall with reasonable false alarm rate (reasonable f1-score), b) decision boundaries and class probabilities that are easy to explain, c) correct classification of canonical sources (i.e., pure explosions and implosions are classified correctly as well as pure earthquakes).  Decision boundaries are easy to explain because they can be represented by smooth contours rather than notches or islands/pockets of classes embedded in each other.     
 
 3. Below is a summary of metrics from difference classifiers
 
