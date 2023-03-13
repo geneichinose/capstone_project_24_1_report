@@ -143,9 +143,9 @@ For the modeling we tested 10 classifiers:
 
 ## Evaluation
 
-Below are selected examples from the Support Vector Machine (SVC()) classifier. The full set of results, tables, and plots are in the Jupyter notebooks.
+Below are selected examples from the Support Vector Machine classifier (SVC). The full set of results, tables, and plots are in the Jupyter notebooks.
 
-### SVC
+### SVC Training and Validation Testing Results
 <PRE>
 Fitting 5 folds for each of 35 candidates, totalling 175 fits
 Pipeline(steps=[('scaler', StandardScaler()),
