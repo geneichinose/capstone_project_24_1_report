@@ -193,7 +193,13 @@ weighted avg       0.95      0.94      0.94       576
  
 ## Deployment 
 
-We save the classification models and included a second jupyter notebook with code to apply classifiers to new data to obtain class probabilities.
+We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampling the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
+
+Visualizing the decision boundaries is important for inspecting the models ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
+We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundries between the classes with gradiational class probabilities. Most of these methods are parameteriezed and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
+
+At the end we added the decision boundaries computed from a 2-layer nueral network (NN) classifier. The first was a test to examine if the NN could be trained based on MT itself (i.e.,) mxx, myy, mzz, mxy, mxz, and myz. The second attempt was based on just the lune_lat and lune_lon. We found as expected that the NN trained on lune_lat and lune_lon, resulted in similar classifier decsion boundaries as MLP and SVM .
+We were surprised that even with limited training data, that the NN could be trained from 6 independent variables to somewhat resemble the results obtained with using just 2 independent variables (ex on top, co below and eqs in the middle). However the class probabilities are highly variable "rough" with no sharp decision boundaries. Perhaps more training data and more complex NN models are required for NN to learn the dimensionality reduction and nonlinear transformation from eigenvalue to spherical projection. Further work was beyond the scope of this study.
 
 ## Summary of Findings
 
