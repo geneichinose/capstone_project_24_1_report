@@ -182,7 +182,7 @@ weighted avg       0.95      0.94      0.94       576
 
 ![svc_confusion_matrix.png](plots/svc_confusion_matrix.png)
 
-<I>Confusion matrix for SVC classifier. Only 3 ex-class are misclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class predicted at ex-26 and co-6). The 26 ex-class false alarms are more concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
+<I>Confusion matrix for SVC classifier. Only 3 ex-class are misclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class predicted at ex-26 and co-6). The 26 ex-class false alarms are not as concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
 
 #### ROC for SVC
 
