@@ -158,6 +158,8 @@ best param={'svc__estimator__C': 30, 'svc__estimator__gamma': 0.01, 'svc__estima
 </PRE>
 We tuned the hyperparamters to optimize the estimator using the training dataset.
 
+#### Summary of Metric Scores for SVC
+
 <pre>
               precision    recall  f1-score   support
 
@@ -170,16 +172,20 @@ We tuned the hyperparamters to optimize the estimator using the training dataset
 weighted avg       0.95      0.94      0.94       576
 </pre>
 <I>Table of scores and metrics for SVC classifier. SVC performed the best for the ex recall 0.97 with acceptable false alarms (precision 0.76). </I>
- 
 
+#### Confusion Matrix for SVC
 
 ![svc_confusion_matrix.png](plots/svc_confusion_matrix.png)
 
 <I>Confusion matrix for SVC classifier. Only 3 ex-class are missclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class prediced at ex-26 and co-6). The 26 ex-class false alarms are more concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
 
+#### ROC for SVC
+
 ![svc_roc.png](plots/svc_roc.png)
 
 <I>Receiver-operator curve (ROC) for SVC classifier. We see that the area under the curve (AUC) is 0.98-1.0 for all classes which is very good.</I>
+
+#### PRC for SVC
 
 ![svc_precision_recall_curves.png](plots/svc_precision_recall_curves.png)
 
@@ -220,6 +226,10 @@ Average fit time is important for time it takes to train the ML model.  SVC was 
 
 ## Future Work, Next Steps
 
-1.  At the time of this report, lessons on Random Forest, Bagging and bootstraping, AdaBoost, GBM, and XGB were not taught yet.  After learning more I will go back and add or refine the analysis. Since the dataset is small, only 1440 rows, then bootstrap resampling may help. 
+1. An Artificial Neural Network (ANN) or NN was able to produce results that were similar in recall score to the SVC estimator using the 2 independent variables lune_lat and lune_lon.  We also preliminarly attempted to train the ANN on using the moment tensor (MT) features (mxx, myy, mzz, mxy, mxz, myz) instead of lune_lat and lune_lon.  That would require training the NN to reduce the dimensionality of the 6 independent variables to just 2 features and also learn the transofrmation to a spherical or similar coordinate system that best separated the class populations. An interesting future study would be to see if the NN could be trained to do this, how many layers it would take, and also what amount of training data would be necessary.  
 
-2. The raw features are the moment tensor elements (Mxx, Myy, Mzz, Mxy, Mxz, Mxz). From PCA, eigen-values are derived from these features.  Further-more, lune_lat and lune_long are derived from eigenvalues.  Therefore there is high correlation of all the features (duplicate) leading to population overlap and potential for overfitting. The next step is to try and compare the classification by using these individually rather than all together.
+2. Create a summary of multiclass scores of metrics for tensorflow.keras like those in sklearn and in the function make_multiclass_score(). 
+
+
+
+
