@@ -93,7 +93,7 @@ explained_variance_ratio = [0.231 0.188 0.171 0.158 0.147 0.105]
 singular_values = [44.683 40.348 38.431 36.892 35.647 30.112]
 </PRE>
 
-It is interesting to note that the PCA with 6 components results in values that all have significance indicating that the input cannot be linearly reduced to just 2 dimensions. 
+It is interesting to note that the PCA with 6 components results in values that all have significance indicating that the input cannot be linearly reduced to just 2 dimensions without some loss of information. 
 
 ![pca.png](plots/pca.png)
 
