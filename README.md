@@ -78,26 +78,31 @@ We didn't use python matplotlib to do the Hammer projection because it does not 
 
 ### PCA analysis
 
+See ichinose-capstone-pca-and-autoencoder.ipynb for details.
+
 <pre>
 features_mt = ['mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz']
 X_mtonly = df[features_mt]
 scaler = StandardScaler()
 Xscaled = scaler.fit_transform(X_mtonly)
-pca = PCA()
+ncols = len(features_mt)
+pca = PCA(n_components=ncols)
 pca.fit_transform(Xscaled)
-n_components = 6 features=6 n_samples=1440
-explained_variance = [ 4.65  1.36  0.00  0.00  0.00  0.00]
-explained_variance_ratio = [ 0.77  0.23  0.00  0.00  0.00  0.00]
-singular_values = [ 81.78  44.18  0.04  0.02  0.00  0.00]
 </pre>
 
-It is interesting to note that the PCA with 6 components results in only 2 values that have significance indicating that the problem can be reduced to just 2 dimensions. We therefore reran PCA with n_components=2 and make a scatter plot. 
+<PRE>
+n_components = 6 features=6 n_samples=1440
+explained_variance = [1.387 1.131 1.026 0.946 0.883 0.63 ]
+explained_variance_ratio = [0.231 0.188 0.171 0.158 0.147 0.105]
+singular_values = [44.683 40.348 38.431 36.892 35.647 30.112]
+</PRE>
+
+It is interesting to note that the PCA with 6 components results in values that all have significance indicating that the input cannot be linearly reduced to just 2 dimensions. 
 
 ![pca.png](plots/pca.png)
 
 <i>A scatterplot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not seperate the class labels as well as using spherical projection of the eigenvalues.</i> 
 
-The PCA derived features was leading to unstable decision boundaries.  We hypothesize this is due to overfitting.  For now we are only using lune_lat and lune_lon as the features to train using the class labels. 
 
 ## Modeling Steps: 
 
