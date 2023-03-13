@@ -101,32 +101,33 @@ The PCA derived features was leading to unstable decision boundaries.  We hypoth
 
 ## Modeling
 
-1. Training testing split (train 60%; testing 40%)
-2. Test sets of features, the first set works the best:
+1. Training testing split (train 60%; testing 40%) - we choose 40% because of the class imbalance.
+2. 
+3. Test sets of features, the first set works the best:
   * features = ['lune_lat', 'lune_lon']
   * features = ['mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz']
   * features = ['eig1', 'eig2', 'eig3']
-3. Set up one-vs-rest version of classifiers (options class_weight=’balanced’ when available) for multiclass problems.
+4. Set up one-vs-rest version of classifiers (options class_weight=’balanced’ when available) for multiclass problems.
   * See list of 10 classifiers below
-4. Set up pipeline
+5. Set up pipeline
   * Standard scalar 
   * Classifier with one-vs-rest
-5. Set up hyperparameter search ranges (these depend on which classifier)
-6. Grid search over hyperparameter
+6. Set up hyperparameter search ranges (these depend on which classifier)
+7. Grid search over hyperparameter
   * Use 5-fold cross validation
   * Scoring = ‘balanced_accuracy’
   * Balanced accuracy = (sensitivity + specificity)/ 2
   * Sensitivity = recall = TP / (TP + FN)
   * Specificity = TN / (TN + FP)
-7. Save the trained models to a disk file for later class predictions and class probabilites using a set of synthetics
-8. Make a Pandas DataFrame table of scores and metric values
+8. Save the trained models to a disk file for later class predictions and class probabilites using a set of synthetics
+9. Make a Pandas DataFrame table of scores and metric values
   * Class precision, recall, f1-score
   * Accuracy
   * Macro average
   * Weighted average
-9. Compute the multiclass values for TP, TN, FP, and FN and plot confusion matrix
-10. Plot multiclass ROC and average ROC curves, compare AUC values
-11. When classifiers have clf.decision_function() method then plot the multiclass precsion and recall curves.
+10. Compute the multiclass values for TP, TN, FP, and FN and plot confusion matrix
+11. Plot multiclass ROC and average ROC curves, compare AUC values
+12. When classifiers have clf.decision_function() method then plot the multiclass precsion and recall curves.
 
 For the modeling we tested 10 classifiers: 
 1. Support Vector Machine (SVC) 
