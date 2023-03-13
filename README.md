@@ -202,7 +202,8 @@ We save the classification models and included a second jupyter notebook with co
 2. SVC classifier works best so far but we are still evaluating 9 other classifier methods.
 
 3. Below is a summary of metrics from difference classifiers
-![Table.png](plots/Table.png)
+
+![Table_of_scores.png](plots/Table_of_scores.png)
 
 ## Future Work, Next Steps
 
