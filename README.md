@@ -176,7 +176,7 @@ We tuned the hyperparamters to optimize the estimator using the training dataset
    macro avg       0.86      0.97      0.90       576
 weighted avg       0.95      0.94      0.94       576
 </pre>
-<I>Table of scores and metrics for SVC classifier. SVC performed the best for the ex recall 0.97 with acceptable false alarms (precision 0.76). </I>
+<I>Table of scores and metrics for SVC classifier. SVC performed the best for the "ex" class recall score of 0.97 with acceptable false alarms (precision score is 0.76). </I>
 
 #### Confusion Matrix for SVC
 
