@@ -101,7 +101,7 @@ The PCA derived features was leading to unstable decision boundaries.  We hypoth
 
 ## Modeling
 
-1. Training testing split (train 60%; testing 40%) - we choose 40% because of the class imbalance.
+1. Training testing split (train 60%; testing 40%) - we chose 40% because of the class imbalance.
 2. 
 3. Test sets of features, the first set works the best:
   * features = ['lune_lat', 'lune_lon']
