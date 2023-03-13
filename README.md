@@ -74,7 +74,7 @@ We didn't use python matplotlib to do the Hammer projection because it does not 
 
 ### PCA analysis
 
-See [ichinose-capstone-pca-and-autoencoder.ipynb](ichinose-capstone-pca-and-autoencoder.ipynb) ichinose-capstone-pca-and-autoencoder.ipynb for details.
+See [ichinose-capstone-pca-and-autoencoder.ipynb](ichinose-capstone-pca-and-autoencoder.ipynb) for details.
 
 <pre>
 features_mt = ['mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz']
@@ -143,7 +143,8 @@ For the modeling we tested 10 classifiers:
 
 ## Evaluation
 
-Below are selected examples from the Support Vector Machine classifier (SVC). The full set of results, tables, and plots are in the Jupyter notebooks.
+Below are selected examples from the Support Vector Machine classifier (SVC). 
+The full set of results, tables, and plots are in the Jupyter notebook [ichinose-capstone-version4.ipynb](ichinose-capstone-version4.ipynb).
 
 ### SVC Training and Validation Testing Results
 <PRE>
@@ -199,6 +200,8 @@ weighted avg       0.95      0.94      0.94       576
 
 ### NN Setup, Training, and Test Results
 
+See [Ichinose-capstone-nn-lune.ipynb](Ichinose-capstone-nn-lune.ipynb) for details.
+
 We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the dataset using the 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead, we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret (runs were not reproducible).  
 
 <PRE>
@@ -238,7 +241,7 @@ Trainable params: 14
 Non-trainable params: 4
 _________________________________________________________________ 
 </PRE>
-<I>The following is the model setup and summary.  See Ichinose-capstone-nn-lune.ipynb.</I>
+<I>The following is the model setup and summary.  See [Ichinose-capstone-nn-lune.ipynb](Ichinose-capstone-nn-lune.ipynb) for details.</I>
 
 ![NN_confusion_matrix.png](plots/NN_confusion_matrix.png)
 
@@ -250,7 +253,9 @@ _________________________________________________________________
 
 ## Deployment 
 
-We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second Jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalue sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
+See [ichinose-capstone-test_lune_plot.ipynb](ichinose-capstone-test_lune_plot.ipynb) for details.
+
+We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second Jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalue sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see [ichinose-capstone-test_lune_plot.ipynb](ichinose-capstone-test_lune_plot.ipynb) for details).
 
 Visualizing the decision boundaries is important for inspecting the models' ability to make logical and physically correct predictions in the 2 parameter (lune_lat, lune_lon) spherical space. For instance, the class membership at the north pole (90,0) must classify as "ex" or explosion and at the south pole (-90,0) must classify as "co" or collapse (mining or cavity). Also, the origin (0,0) must classify as a high probability (e.g., ~ 100%) earthquake where there is the highest density of training data. These lune_lat and lune_lon for the 3 conanical sources must retain the physically correct class memberships. Since there is much fewer "ex" and "co" data points, then the probabilities may not be high confidence as "eq".
 We expect the SVM, QDA, GPC, GNB, LGR, and MLP estimators to produce decision boundaries with simple smooth curved boundaries between the classes with gradational class probabilities. Most of these methods are parameterized and with just 2 input independent variables, it is expected the models will not be too complex. In contrast we expect DTC, RFC, and KNN decision boundaries to be more complex and difficult to explain in terms of the two parameter input space.
