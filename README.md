@@ -282,11 +282,11 @@ Average fit time is important for time it takes to train the ML model.  SVC was 
 
 ## Future Work, Next Steps
 
-1. An Artificial Neural Network (ANN) or NN was able to produce results that were similar in recall score to the SVC estimator using the 2 independent variables lune_lat and lune_lon.  We also preliminarily attempted to train the ANN on using the moment tensor (MT) features (mxx, myy, mzz, mxy, mxz, myz) instead of lune_lat and lune_lon.  That would require training the NN to reduce the dimensionality of the 6 independent variables to just 2 features and also learn the transformation to a spherical or similar coordinate system that best separated the class populations. An interesting future study would be to see if the NN could be trained to do this, how many layers it would take, and also what amount of training data would be necessary.  
+1. An Artificial Neural Network (ANN) or NN was able to produce results that were similar in recall score to the SVC estimator using the 2 independent variables lune_lat and lune_lon.  We also preliminarily attempted to train the ANN on using the moment tensor (MT) features (mxx, myy, mzz, mxy, mxz, myz) instead of lune_lat and lune_lon.  That would require training the NN to reduce the dimensionality of the 6 independent variables to just 2 features and also learn the transformation to a spherical or similar coordinate system that best separated the class populations. An interesting future study would be to see if the NN could be trained to do this, how many layers it would take, and also what amount of training data would be necessary.  Could ML algorithm learn what took scientists 50+ years to figure out. 
 
-2. Create a summary of multiclass scores of metrics for tensorflow.keras like those in sklearn and in the function make_multiclass_score(). 
+2. Create a summary of multiclass scores of metrics for tensorflow.keras like those in sklearn and in the function make_multiclass_score(). This would allow more closer closer inspection of the metric scores between SVC and NN classifier.
 
-3. Compare NN and SVC classifiers to the current state-of-the-art screener by [Ford et. al. (2020)](https://academic.oup.com/gji/article-abstract/221/1/77/5697207?redirectedFrom=fulltext). 
+3. Compare performance between NN and SVC classifiers to the current state-of-the-art screener by [Ford et. al. (2020)](https://academic.oup.com/gji/article-abstract/221/1/77/5697207?redirectedFrom=fulltext). 
 
 
 
