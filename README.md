@@ -211,10 +211,11 @@ We were surprised that even with limited training data, that the NN could be tra
 
 ![Table_of_scores.png](plots/Table_of_scores.png)
 
-4. clf.predict(X) generates class memberships inconsistent with clf.predict_proba(X).  We adopted multiclass approach used in tensorflow.keras which is to used prob=clf.predict_proba(X) and then np.argmax(prob) to find the index for the class with the maximum probability.
+<I>The scores are compiled into a pandas DataFrame. The top sort is the f1-score sorted in desending order.  The lower table is recall sorted in desending order.</I>
+ 
+4. Clf.predict(X) generates class memberships inconsistent with clf.predict_proba(X).  We adopted multiclass approach used in tensorflow.keras which is to used prob=clf.predict_proba(X) and then np.argmax(prob) to find the index for the class with the maximum probability.
 
 5. NN approach also works well and is very compariable to SVC.  The scores are only slightly lower.
-
 
 ## Future Work, Next Steps
 
