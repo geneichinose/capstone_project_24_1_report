@@ -47,9 +47,9 @@ Class imbalance:
 
 ![class.png](plots/class.png)
 
-The histogram was created in the Jupyter notebook [ichinose-capstone-version4.ipynb](ichinose-capstone-version4.ipynb).
+<i>Histogram of percentages of dataset for each class label. The histogram was created in the Jupyter notebook [ichinose-capstone-version4.ipynb](ichinose-capstone-version4.ipynb). </i>
 
-<i>Histogram of percentages of dataset for each class label.</i>
+
 
 ### Correlation
 
