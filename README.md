@@ -169,15 +169,17 @@ We tuned the hyperparamters to optimize the estimator using the training dataset
    macro avg       0.86      0.97      0.90       576
 weighted avg       0.95      0.94      0.94       576
 </pre>
-Table of scores and metrics for SVC classifier. SVC performed the best for the ex recall 0.97 with acceptable false alarms (precision 0.76). 
+<I>Table of scores and metrics for SVC classifier. SVC performed the best for the ex recall 0.97 with acceptable false alarms (precision 0.76). </I>
  
-Confusion matrix for SVC classifier.
+
 
 ![svc_confusion_matrix.png](plots/svc_confusion_matrix.png)
- 
-ROC curve for SVC 
+
+<I>Confusion matrix for SVC classifier. Only 3 ex-class are missclassified, predicted as eq-class.  That is the best metric compared to all others (see all confusion matrix in Jupyter notebook).  There are 32 false alarms (eq-class prediced at ex-26 and co-6 but the ex-class is more concerning because it increases workload; however, analysts are supposed to look at everything anyway.</I>  
 
 ![svc_roc.png](plots/svc_roc.png)
+
+<I>Receiver-operator curve (ROC) for SVC classifier. We see that the area under the curve (AUC) is 0.98-1.0 for all classes which is very good.</I>
 
 Precision-Recall curve for SVC
 
