@@ -66,13 +66,13 @@ We see the 2-dimensional space with lune_lat and lune_lon will work best for cla
 
 These plots were created in the Jupyter notebook [ichinose-capstone-version4.ipynb](ichinose-capstone-version4.ipynb).
 
-GMT plot
+The 2 features can be visualized in either Cartesian (x,y) or spherical (rho,phi) coordinate system.
 
 ![lune.png](plots/lune.png)
 
-<i> Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude, latitude) coordinate system.  The Hammer projection "spherical" is a better projection compared to linear for separating the classes.</i>
+<i> Same plot as above of two features (lune_lat and lune_lon) used to train classifiers in spherical Hammer projection (longitude, latitude) coordinate system.  The spherical Hammer projection is a better projection compared to a linear Cartesian coordinate system for separating the classes.</i>
 
-This type of Hammer spherical projection is preferred over others including Cartesian because it preserves the true physical distances between points and the areas of source types.  This is similar to the distortion some map projections make on the area of land masses near the poles. We didn't use python matplotlib to do the Hammer projection because it does not allow adjustment of the longitude range, only plots the whole globe 0-360 or -180 to +180.  We instead used Generic Mapping Tools (GMT) software package ([link](https://www.generic-mapping-tools.org))
+This type of spherical projection is preferred over Cartesian because it preserves the true physical distances between points and the areas of source types.  This is similar to the distortion some map projections make on the area of land masses near the poles. We didn't use python matplotlib to do the Hammer projection because it does not allow adjustment of the longitude range, only plots the whole globe 0-360 or -180 to +180.  We instead used Generic Mapping Tools (GMT) software package ([link](https://www.generic-mapping-tools.org))
 
 ### PCA analysis
 
