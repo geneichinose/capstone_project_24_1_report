@@ -257,7 +257,7 @@ _________________________________________________________________
 
 ## Deployment 
 
-See [ichinose-capstone-test_lune_plot.ipynb](ichinose-capstone-test_lune_plot.ipynb) for details.
+The deployment work was organize into a separate Jupyter notebook [ichinose-capstone-test_lune_plot.ipynb](ichinose-capstone-test_lune_plot.ipynb) from the main multiclass analysis, PCA, and NN sections.
 
 We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second Jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalue sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see [ichinose-capstone-test_lune_plot.ipynb](ichinose-capstone-test_lune_plot.ipynb) for details).
 
