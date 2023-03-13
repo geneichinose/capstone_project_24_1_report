@@ -56,15 +56,8 @@ Since lune_lat is derived from the diagonal of the MT (mxx, myy, and mzz), we fi
 
 <i>Seaborn heatmap of correlation values for all feature pairs. There are many moderate correlation between the features since they are all derived from the MT (mxx, myy, mzz, etc...).  The eigenvalues (eig1, eig2, and eig3) are derived from the MT using PCA, and the lune_lat and lune_lon are transformed from the eigenvalues.</i>
 
-Seaborn Pairplot
-
-![seaborn_pairplot.png](plots/seaborn_pairplot.png)
-
-<i>Seaborn pairplot of the dataset features.  We see the 2-dimensional space with lune_lat and lune_lon will work best for classification</i>
- 
-![seaborn_scatterplot.png](plots/seaborn_scatterplot.png)
-
-<i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian cooridinate system.  </i>
+<i>The 2 features, lune_lat and lune_lon, which are selected to train classifiers, are shown in linear (x,y) Cartesian cooridinate system. 
+We see the 2-dimensional space with lune_lat and lune_lon will work best for classification.</i>
 
 GMT plot
 
@@ -101,7 +94,7 @@ It is interesting to note that the PCA with 6 components results in values that 
 
 ![pca.png](plots/pca.png)
 
-<i>A scatterplot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not seperate the class labels as well as using spherical projection of the eigenvalues.</i> 
+<i>Figure upper left: A scatterplot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not seperate the class labels as well as using spherical projection of the eigenvalues shown in the previous plot.  The other panels show nonlinear dimensionality reduction approaches: Autoencoder, t-SNE, and Isomap. Future work could test the performance of these approches in classification.</i> 
 
 
 ## Modeling Steps: 
