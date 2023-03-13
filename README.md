@@ -146,6 +146,18 @@ For the modeling we tested 10 classifiers:
 Below are selected examples from the Support Vector Machine (SVC()) classifier. The full set of results, tables, and plots are in the Jupyter notebooks.
 
 ### SVC
+<PRE>
+Fitting 5 folds for each of 35 candidates, totalling 175 fits
+Pipeline(steps=[('scaler', StandardScaler()),
+                ('svc',
+                 OneVsRestClassifier(estimator=SVC(C=30,
+                                                   class_weight='balanced',
+                                                   gamma=0.01,
+                                                   probability=True)))])
+best param={'svc__estimator__C': 30, 'svc__estimator__gamma': 0.01, 'svc__estimator__kernel': 'rbf'}  best score=0.980
+</PRE>
+We tuned the hyperparamters to optimize the estimator using the training dataset.
+
 <pre>
               precision    recall  f1-score   support
 
@@ -157,8 +169,7 @@ Below are selected examples from the Support Vector Machine (SVC()) classifier. 
    macro avg       0.86      0.97      0.90       576
 weighted avg       0.95      0.94      0.94       576
 </pre>
-
-Table of scores and metrics for SVC classifier
+Table of scores and metrics for SVC classifier. SVC performed the best for the ex recall 0.97 with acceptable false alarms (precision 0.76). 
  
 Confusion matrix for SVC classifier.
 
