@@ -192,7 +192,7 @@ weighted avg       0.95      0.94      0.94       576
  
 ![svc.lune.jpg](output/svc.lune.jpg)
 
-<I>To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X), (see more below).</I>
+<I>To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X), (see more below in the Deployment section).</I>
 
 ### NN Setup, Training, and Test Results
 
