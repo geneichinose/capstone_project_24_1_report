@@ -204,7 +204,7 @@ weighted avg       0.95      0.94      0.94       576
 
 ### NN Setup, Training, and Test Results
 
-The Artificial Neural Network (ANN) analysis, or NN for short, was performed in the final week of the project and therefore was peformed in a separate Jupyter notebook [Ichinose-capstone-nn-lune.ipynb](Ichinose-capstone-nn-lune.ipynb).
+The Artificial Neural Network (ANN) analysis, or NN for short, was performed in the final week of the project and therefore was organized in a separate Jupyter notebook [Ichinose-capstone-nn-lune.ipynb](Ichinose-capstone-nn-lune.ipynb).
 
 We setup an ANN to perform the same classification problem as previously presented.  We loaded the dataset using the 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead, we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret (runs were not reproducible).  
 
