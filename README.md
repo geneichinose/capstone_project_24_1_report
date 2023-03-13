@@ -196,7 +196,48 @@ weighted avg       0.95      0.94      0.94       576
 ![svc.lune.jpg](output/svc.lune.jpg)
 
 <I>To evaluate the classifiers, we simulate 50,000 randomly distributed input features to compute class probabilities using clf.predict_proba(X), (see more below).</I>
- 
+
+### NN Setup, Training, and Test Results
+
+We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the same dataset using the same 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret.  
+
+<PRE>
+model1 = Sequential([
+    Dense(  2, input_dim=2, use_bias = False, activation="sigmoid" ),
+    BatchNormalization(),
+    Dense(  3, use_bias = False, activation="softmax"),
+])
+optim = Adam(learning_rate=0.005) 
+callback = EarlyStopping(monitor='loss', patience = 20, min_delta = 0.00001, verbose = 1)
+metrics = F1Score( num_classes=3, threshold=0.5, name="f1-score", average="weighted" )
+model1.compile( loss="categorical_crossentropy", metrics=metrics, optimizer=optim )
+history1 = model1.fit(  X_train, y_train, 
+                        validation_data = (X_test, y_test), 
+                      shuffle=False,
+                        epochs=500, 
+                      verbose=1)
+
+Model: "sequential"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense (Dense)               (None, 2)                 4         
+                                                                 
+ batch_normalization (BatchN  (None, 2)                8         
+ ormalization)                                                   
+                                                                 
+ dense_1 (Dense)             (None, 3)                 6         
+                                                                 
+=================================================================
+Total params: 18
+Trainable params: 14
+Non-trainable params: 4
+_________________________________________________________________ 
+</PRE>
+<I>The following is the model setup and summary.  See Ichinose-capstone-nn-lune.ipynb.</I>
+
+
+
 ## Deployment 
 
 We tested a deployment strategy by saving all the trained classification models so that they can be later loaded for predictions. We included a second jupyter notebook with test python code to load the trained estimator models, load synthetically generated input features, apply classifiers to new data to obtain multiclass probabilities.  The synthetic dataset contains 50,000 points uniformly sampled on the eigenvalye sphere randomly. The dense sampling spans the entire space so that decision boundaries can also be mapped (see ichinose-capstone-test_lune_plot.ipynb).
