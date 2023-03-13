@@ -199,7 +199,7 @@ weighted avg       0.95      0.94      0.94       576
 
 ### NN Setup, Training, and Test Results
 
-We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the same dataset using the same 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret.  
+We setup an Artificial Neural Network (ANN) to perform the same classification problem as previously presented.  We loaded the dataset using the 2 features: 'lune_lat' and 'lune_lon' from the DataFrame.  Sklearn estimators did not require one-hot-encoding of the target variables, however, it did require special class object instance of OneVsRestClassifier().  Instead we used the LabelBinarizer to transform the y-target dependent variable transformed to a encoded vector.  We used the same 60-40% train test split.  We learned that the random seed needs to be reset for every run to reproduce results, otherwise, the initialization of weights makes the results difficult to interpret.  
 
 <PRE>
 model1 = Sequential([
@@ -236,7 +236,13 @@ _________________________________________________________________
 </PRE>
 <I>The following is the model setup and summary.  See Ichinose-capstone-nn-lune.ipynb.</I>
 
+![NN_confusion_matrix.png](plots/NN_confusion_matrix.png)
 
+<I>NN Confusion matrix.</I>
+
+![nn.lune.lune.jpg](output/nn.lune.lune.jpg)
+
+<I>NN classification decision boundaries and class probabilities.</I>
 
 ## Deployment 
 
