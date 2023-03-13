@@ -97,7 +97,7 @@ It is interesting to note that the PCA with 6 components results in values that 
 
 ![pca.png](plots/pca.png)
 
-<i>Figure upper left: A scatter plot of pc1 and pc2 from the PCA with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not separate the class labels as well as using spherical projection of the eigenvalues shown in the previous plot.  The other panels show nonlinear dimensionality reduction approaches: Autoencoder, t-SNE, and Isomap. Future work could test the performance of these approaches in classification.</i> 
+<i>Figure upper left: A scatter plot of pc1 and pc2 from the PCA(n_components=2) with 2 components. The linear transformation from reducing the dimensionality from 6 to 2 does not separate the class labels as well as using spherical projection of the eigenvalues shown in the previous plot.  The other panels show nonlinear dimensionality reduction approaches: Autoencoder, t-SNE, and Isomap. Future work could test the performance of these approaches in classification.</i> 
 
 
 ## Modeling Steps: 
