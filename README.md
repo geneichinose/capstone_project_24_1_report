@@ -99,7 +99,7 @@ It is interesting to note that the PCA with 6 components results in only 2 value
 
 The PCA derived features was leading to unstable decision boundaries.  We hypothesize this is due to overfitting.  For now we are only using lune_lat and lune_lon as the features to train using the class labels. 
 
-## Modeling
+## Modeling Steps: 
 
 1. Training testing split (train 60%; testing 40%) - we chose 40% because of the class imbalance.
 2. 
@@ -143,6 +143,9 @@ For the modeling we tested 10 classifiers:
 
 ## Evaluation
 
+Below are selected examples from the Support Vector Machine (SVC()) classifier. The full set of results, tables, and plots are in the Jupyter notebooks.
+
+### SVC
 <pre>
               precision    recall  f1-score   support
 
