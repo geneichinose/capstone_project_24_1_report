@@ -205,15 +205,19 @@ model1 = Sequential([
     Dense(  3, use_bias = False, activation="softmax"),
 ])
 optim = Adam(learning_rate=0.005) 
-callback = EarlyStopping(monitor='loss', patience = 20, min_delta = 0.00001, verbose = 1)
 metrics = F1Score( num_classes=3, threshold=0.5, name="f1-score", average="weighted" )
+
 model1.compile( loss="categorical_crossentropy", metrics=metrics, optimizer=optim )
-history1 = model1.fit(  X_train, y_train, 
+
+ history1 = model1.fit(  X_train, y_train, 
                         validation_data = (X_test, y_test), 
                       shuffle=False,
                         epochs=500, 
                       verbose=1)
+model1.summary()
+</PRE>
 
+<PRE>
 Model: "sequential"
 _________________________________________________________________
  Layer (type)                Output Shape              Param #   
