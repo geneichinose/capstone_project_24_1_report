@@ -239,7 +239,7 @@ _________________________________________________________________
 
 ![NN_confusion_matrix.png](plots/NN_confusion_matrix.png)
 
-<I>NN Confusion matrix.</I>
+<I>NN Confusion matrix. There were 5 explosions predicted as earthquakes (missed detections) instead of 3 misses in SVC results</I>
 
 ![nn.lune.lune.jpg](output/nn.lune.lune.jpg)
 
