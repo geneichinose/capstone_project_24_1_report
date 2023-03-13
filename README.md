@@ -74,7 +74,7 @@ We didn't use python matplotlib to do the Hammer projection because it does not 
 
 ### PCA analysis
 
-See ichinose-capstone-pca-and-autoencoder.ipynb for details.
+See ![ichinose-capstone-pca-and-autoencoder.ipynb](ichinose-capstone-pca-and-autoencoder.ipynb) ichinose-capstone-pca-and-autoencoder.ipynb for details.
 
 <pre>
 features_mt = ['mxx', 'myy', 'mzz', 'mxy', 'mxz', 'myz']
