@@ -286,6 +286,8 @@ Average fit time is important for time it takes to train the ML model.  SVC was 
 
 2. Create a summary of multiclass scores of metrics for tensorflow.keras like those in sklearn and in the function make_multiclass_score(). 
 
+3. Compare NN and SVC classifiers to the current state-of-the-art screener by [Ford et. al. (2020)](https://academic.oup.com/gji/article-abstract/221/1/77/5697207?redirectedFrom=fulltext). 
+
 
 
 
