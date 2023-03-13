@@ -265,7 +265,7 @@ We were surprised that even with limited training data, that the NN could be tra
 
 ![Table_of_scores.png](plots/Table_of_scores.png)
 
-<I>The scores are compiled into a pandas DataFrame. The top sort is the f1-score sorted in desending order.  The lower table is recall sorted in desending order. See the bottom of the Jupyter notebook to see sorted rows for all metrics (precision, accuracy, auc). 
+<I>The scores are compiled into a pandas DataFrame. The top sort is the f1-score sorted in descending order.  The lower table is recall sorted in descending order. See the bottom of the Jupyter notebook to see sorted rows for all metrics (precision, accuracy, auc). 
 Average fit time is important for time it takes to train the ML model.  SVC was only the 4th slowest per run. It was not the slowest; however, it was 10 times slower as LGR as 20 times compared to the 4 fastest</I> 
  
 4. Clf.predict(X) generates class memberships inconsistent with clf.predict_proba(X).  We adopted multiclass approach used in tensorflow.keras which is to used prob=clf.predict_proba(X) and then np.argmax(prob) to find the index for the class with the maximum probability.
