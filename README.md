@@ -35,6 +35,7 @@ We used principal component analysis (PCA) to convert the 6 moment tensor elemen
 The original input features used to train the classifier models are the 6 moment tensor elements (Mxx, Myy, Mzz, Mxy, Mxz, Myz), the 3 eigenvalues (eig1, eig2, eig3) and 2 lune parameters (lune_lat, lune_lon).  We found that this made the decision boundaries rough and scattered and multiclass probabilities very unstable. This may be an effect of over fitting when using too many features.  Testing with 5 features (lune_lat, lune_lon , eig1, eig2, eig3) also led to instabilities in the decision boundaries. We finally concluded that using only two features (lune_lat, lune_lon) obtained stable classification boundaries. 
 
 Use dictionary event_dict={0: ‘eq’, 1: ‘ex’, 2: ‘co’} to df.map(event_dict) labels the three numerical class types:
+
 1. Earthquake “eq” class=0
 2. Explosion  “ex” class=1
 3. Collapse   “co” class=2
