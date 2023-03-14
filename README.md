@@ -164,7 +164,7 @@ best param={'svc__estimator__C': 30, 'svc__estimator__gamma': 0.01, 'svc__estima
 </PRE>
 We tuned the hyperparamters to optimize the estimator using the training dataset.
 
-#### Summary of Metric Scores for SVC
+#### Summary of Metric Validation Test Scores for SVC
 
 <pre>
               precision    recall  f1-score   support
